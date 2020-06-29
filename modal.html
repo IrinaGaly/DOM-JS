@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="">
+  <title>Document</title>
+</head>
+<body>
+ <style>
+
+
+   body {
+     font-family: Arial, Helvetica, sans-serif;
+     background: wheat;
+     
+   }
+
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#myBtn {
+  background-color: gold;
+  color: white;
+  padding: 12px 16px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  width: 180px;
+}
+
+
+.modal {
+    height: 50px;
+    width: 300px;
+    display: none; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    
+}
+
+
+.modal-content {
+    background: linear-gradient(black, gray);
+    color: white;
+    margin: auto;
+    padding: 0;
+    width: 50%;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+.close {
+    color: white;
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+ </style>
+  
+    <div class="wrapper">
+      <div class="overlay" id="overlay">
+        <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis tempora aliquam expedita quas, rerum impedit id autem praesentium voluptatum quo voluptas deserunt exercitationem beatae cum officiis culpa dignissimos laboriosam? Laudantium?</p>
+        <button id="myBtn">Открыть окно</button>
+      </div>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <h2>Hello, world!</h2>
+        </div>
+      </div>
+    </div>
+<script>
+
+var modal = document.querySelector('#modal');
+
+
+var btn = document.querySelector('#myBtn');
+
+
+var span = document.querySelector('#close');
+
+var overlay = document.querySelector('#overlay');
+
+
+
+btn.addEventListener('click', function() {
+    modal.style.display = "block";
+
+    
+
+})
+
+
+span.addEventListener('click', function() {
+    modal.style.display = "none";
+})
+
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+  </body>
+</html>

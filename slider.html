@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+  <style>
+    html,
+body {
+  width: 100%;
+  height: 100%;
+  
+}
+
+body {
+  background-color: #c0a3cc;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.container-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+.blok {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  background-color: papayawhip;
+  box-sizing: border-box;
+  border: 1px solid #444444;
+  transition: right .3;
+}
+
+
+
+.slider__list {
+  display: flex;
+  position: relative;
+  color: #444444;
+  font-size: 30px;
+  right: 0;
+  padding: 0;
+
+} 
+ 
+.slider {
+  display: flex;
+  width: 450px;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+.ship {
+  color: pink;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+  <div class="container-slider">
+    <a href="#" class="ship" id="ship-left">←</a>
+    <div class="slider">
+      <ul class="slider__list" id="slider__list">
+        <li class="blok" id="blok">1</li>
+        <li class="blok">2</li>
+        <li class="blok">3</li>
+        <li class="blok">4</li>
+        <li class="blok">5</li>
+        <li class="blok">6</li>
+        <li class="blok">7</li>
+        <li class="blok">8</li>
+      </ul>
+    </div>
+    <a href="#" class="ship" id="ship-right">→</a>
+  </div>
+
+  <script>
+    const leftBtn = document.querySelector('#ship-left');
+    const rightBtn = document.querySelector('#ship-right');
+    const items = document.querySelector('#slider__list');
+    const computedStyles = getComputedStyle(slider__list);
+
+
+  
+
+    rightBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      let currentRight = parseInt(computedStyles.right)
+
+      if (currentRight < 750) {
+
+        slider__list.style.right = `${currentRight + 150}px`;
+
+        }
+      });
+
+      leftBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      let currentRight = parseInt(computedStyles.right)
+
+      if (currentRight > 0) {
+
+        slider__list.style.right = `${currentRight - 150}px`;
+
+        }
+      });
+  
+
+
+
+    //   let currentLeft = 0;
+
+    // leftBtn.addEventListener('click', function(b){
+    //  b.preventDefault();
+      
+    //   currentLeft -= 150;
+
+    //  items.style.right = `${currentLeft}px`;
+
+    // }); 
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+.content {
+  width: 400px;
+  background: #444;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  margin: 0;
+}
+.close {
+  color: #fff;
+  position: absolute;
+  right: -5px;
+  top: -10px;
+  background: #d00;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+    .overlay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(00, 00, 00, .2);
+      z-index: 10000;
+    }
+    .btn {
+      background: palevioletred;
+      border: none;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 3px;
+      font-size: 20px;
+    }
+    .modal-container {
+      position: relative;
+    }
+  </style>
+  <div class="container">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum minima officia provident distinctio quod mollitia alias. Natus repellat quae officiis neque, soluta quisquam quidem illum quos rem dolore numquam iure.  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos deserunt ex quia quidem recusandae hic facere vel distinctio vero ullam rerum harum, enim minima quo. Enim praesentium aliquam porro molestias.</p>
+    <button class="btn" id="open">открыть</button>
+  </div>
+  <script>
+    const openBtn = document.querySelector("#open");
+    const body = document.body;
+
+    openBtn.addEventListener('click', e => {
+      const overlayElem = document.createElement("div");
+      overlayElem.classList.add("overlay");
+
+      overlayElem.addEventListener('click', e => {
+        if (e.target == overlayElem) {
+        closeBtn.click();
+      }
+      });
+
+      const containerElem = document.createElement("div");
+      containerElem.classList.add("modal-container");
+
+      const contentElem = document.createElement("div");
+      contentElem.classList.add("content");
+
+      contentElem.innerHTML = "Hello, <b>world!<b>";
+
+      const closeBtn = document.createElement("a");
+      closeBtn.classList.add("close");
+      closeBtn.innerHTML = "x";
+      closeBtn.href = "#";
+
+      closeBtn.addEventListener('click', e => {
+        e.preventDefault();
+        body.removeChild(overlayElem);
+      });
+
+      overlayElem.appendChild(containerElem);
+      containerElem.appendChild(closeBtn);
+      containerElem.appendChild(contentElem);
+      body.appendChild(overlayElem);
+    });
+  </script>
+</body>
+</html>
